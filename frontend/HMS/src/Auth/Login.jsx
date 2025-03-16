@@ -1,7 +1,10 @@
 import { useState } from "react";
+import "./Auth.css";
+import { NavLink } from "react-router-dom";
+import hospitalImg from "../assets/login.png";
 
 const Login = () => {
-  const [email, setemail] = useState(""); // email ko state me define kiya
+  const [email, setemail] = useState(""); 
   const [password, setPassword] = useState("");
   const [message, setMessage] = useState("");
 
@@ -13,7 +16,7 @@ const Login = () => {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ email, password }), // email yahan pass kiya gaya
+        body: JSON.stringify({ email, password }),
       });
 
       const data = await response.json();
@@ -37,14 +40,17 @@ const Login = () => {
   };
 
   return (
-    <div>
-      <h2>Login</h2>
+    <div className="auth-container">
+      <div className="auth-box">
+        <div className="auth-form">
+        <h2 className="reg-logo">MHC</h2>
+        <h3>Welcome!</h3>
       <form onSubmit={handleLogin}>
         <input
           type="text"
           placeholder="email"
           value={email}
-          onChange={(e) => setemail(e.target.value)} // email ko update kar rahe hain
+          onChange={(e) => setemail(e.target.value)} 
         />
         <input
           type="test"
@@ -52,9 +58,22 @@ const Login = () => {
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
-        <button type="submit">Login</button>
+        <button type="submit" className="btn">Log-In</button>
       </form>
+       <p className="or-text">or</p>
+          <p className="bottom-text">
+            Don't have an account? <NavLink to="/register">Register</NavLink>
+          </p>
       {message && <p>{message}</p>}
+        </div>
+
+      <div className="auth-image">
+                <h2>Where Technology Meets Compassionate Care.</h2>
+                <p>"Seamless Hospital Management For Smarter Faster, And Better Healthcare."</p>
+                <img src={hospitalImg} alt="Hospital" />
+              </div>
+
+      </div>
     </div>
   );
 };

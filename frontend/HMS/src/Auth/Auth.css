@@ -1,0 +1,124 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Montserrat", sans-serif;
+}
+
+.auth-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 88vh;
+    background: #f8f8f8;
+}
+
+.auth-box {
+    display: flex;
+    max-width: 700px;
+    width: 90%;
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.auth-form {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 2rem;
+}
+
+.reg-logo{
+    color: #28A570;
+    /* font-size: 1.8rem; */
+    font-weight: bold;
+    text-align: center;
+}
+
+.auth-form h3 {
+    /* font-size: 1.5rem; */
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.auth-form p {
+    color: gray;
+    text-align: center;
+    font-size: 14px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+input {
+    padding: 10px;
+    /* font-size: 1rem; */
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    /* margin-top: 5px; */
+}
+
+.btn {
+    background: #28A570;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.btn:hover {
+    background: #28A570;
+}
+
+.or-text {
+    text-align: center;
+    margin: 10px 0;
+}
+
+.bottom-text a{
+    text-decoration: none;
+    color: #28A570;
+}
+
+.auth-image {
+    width: 50%;
+    background: #28A570;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+    gap: 5px;
+    font-size: 14px;
+}
+
+.auth-image img {
+    width: 100%;
+    max-width: 350px;
+    border-radius: 10px;
+}
+
+@media (max-width: 768px) {
+    .auth-container {
+        height: auto;
+        padding: 20px;
+    }
+
+    .auth-box {
+        flex-direction: column;
+    }
+
+    .auth-form, .auth-image {
+        width: 100%;
+    }
+}
