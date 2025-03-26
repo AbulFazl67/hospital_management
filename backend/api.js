@@ -10,7 +10,7 @@ app.post("/register", (req, res) => {
             console.error(err)
             res.status(401).send({ error: "Cannot register user" })
         } else {
-            res.status(201).send({ msg: "Registered successfully" })
+            res.status(201).send({ msg: "Registered successfully" , status:201 })
         }
     })
 })
@@ -346,6 +346,22 @@ app.put("/update-user", (req, res) => {
             res.status(401).send("Error in sql")
         } else {
             res.status(200).send("Updated SuccessFully")
+        }
+    })
+})
+
+
+app.get('/getPatientsAppointment/:id' , (req, res)=>{
+    const sql="select * from appointment where patient_id=?"
+    conn.query(sql, [req.params.id], (err, result) => {
+        if(err){
+            res.status(500).send({error:err})
+        }else{
+            if(result.length>0){
+                res.status(200).send({msg:result , status:200})
+            }else{
+                res.status(404).send({msg:"No Appointments Found" , status:404})
+            }
         }
     })
 })

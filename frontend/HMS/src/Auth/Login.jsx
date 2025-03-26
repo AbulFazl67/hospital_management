@@ -1,11 +1,16 @@
 import { useState } from "react";
 import "./Auth.css";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import hospitalImg from "../assets/login.png";
 
 const Login = () => {
-  const [email, setemail] = useState(""); 
-  const [password, setPassword] = useState("");
+  const navigate = useNavigate();
+
+  const [user, setUser] = useState({
+    email: "",
+    password: "",
+  });
+
   const [message, setMessage] = useState("");
 
   const handleLogin = async (e) => {
@@ -16,19 +21,22 @@ const Login = () => {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ email, password }),
+        body: JSON.stringify({ email: user.email, password: user.password }),
       });
 
       const data = await response.json();
-
-      if (response.ok) {
+      if (data.msg) {
         setMessage("Login successful!");
-        if(data.msg.role=="admin"){
-          console.warn("rediret to admin panel")
-        }else if(data.msg.role=="doctor"){
-          console.warn("redirect to doctor panel")
-        }else if(data.msg.role=="clerk"){
-          console.warn("redirect to clerk panel")
+        if (data.msg.role === "admin") {
+          console.warn("Redirect to admin panel");
+        } else if (data.msg.role === "doctor") {
+          console.warn("Redirect to doctor panel");
+        } else if (data.msg.role === "clerk") {
+          console.warn("Redirect to clerk panel");
+        } else if (data.msg.role === "patient") {
+          console.warn("Redirect to patient dashboard");
+          localStorage.setItem("userId", data.msg.user_id);
+          navigate("/patient/dashboard");
         }
       } else {
         setMessage(data.message || "Login failed!");
@@ -42,37 +50,29 @@ const Login = () => {
   return (
     <div className="auth-container">
       <div className="auth-box">
+
         <div className="auth-form">
-        <h2 className="reg-logo">MHC</h2>
-        <h3>Welcome!</h3>
-      <form onSubmit={handleLogin}>
-        <input
-          type="text"
-          placeholder="email"
-          value={email}
-          onChange={(e) => setemail(e.target.value)} 
-        />
-        <input
-          type="test"
-          placeholder="Password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
-        <button type="submit" className="btn">Log-In</button>
-      </form>
-       <p className="or-text">or</p>
+          <h2 className="reg-logo">MHC</h2>
+          <h3>Welcome!</h3>
+
+          <form onSubmit={handleLogin}>
+            <input type="email" placeholder="Email" value={user.email} onChange={(e) => setUser({ ...user, email: e.target.value })} />
+            <input type="password" placeholder="Password" value={user.password} onChange={(e) => setUser({ ...user, password: e.target.value })} />
+            <button type="submit" className="btn">Log-In</button>
+          </form>
+          <p className="or-text">or</p>
+          {message && <p>{message}</p>}
+
           <p className="bottom-text">
             Don't have an account? <NavLink to="/register">Register</NavLink>
           </p>
-      {message && <p>{message}</p>}
         </div>
 
-      <div className="auth-image">
-                <h2>Where Technology Meets Compassionate Care.</h2>
-                <p>"Seamless Hospital Management For Smarter Faster, And Better Healthcare."</p>
-                <img src={hospitalImg} alt="Hospital" />
-              </div>
-
+        <div className="auth-image">
+          <h2>Where Technology Meets Compassionate Care.</h2>
+          <p>"Seamless Hospital Management For Smarter Faster, And Better Healthcare."</p>
+          <img src={hospitalImg} alt="Hospital" />
+        </div>
       </div>
     </div>
   );

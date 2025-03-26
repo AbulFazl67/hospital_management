@@ -1,0 +1,58 @@
+.dashboard-container {
+    max-width: 800px;
+    margin: auto;
+    padding: 20px;
+    text-align: center;
+  }
+  
+  .fetch-btn {
+    padding: 10px 15px;
+    margin: 10px 0;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 5px;
+  }
+  
+  .fetch-btn:hover {
+    background-color: #0056b3;
+  }
+  
+  .error {
+    color: red;
+    font-weight: bold;
+  }
+  
+  .info, .no-data {
+    font-size: 18px;
+    font-weight: bold;
+    color: gray;
+  }
+  
+  .appointment-table {
+    width: 100%;
+    margin-top: 15px;
+    border-collapse: collapse;
+  }
+  
+  .appointment-table th,
+  .appointment-table td {
+    border: 1px solid #ddd;
+    padding: 10px;
+  }
+  
+  .appointment-table th {
+    background-color: #000;
+    color: white;
+  }
+  
+  .appointment-table tr:nth-child(even) {
+    background-color: #f2f2f2;
+  }
+  
+  .appointment-table tr:hover {
+    background-color: #ddd;
+  }
+  
