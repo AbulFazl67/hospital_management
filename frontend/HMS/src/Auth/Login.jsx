@@ -27,6 +27,7 @@ const Login = () => {
       const data = await response.json();
       if (data.msg) {
         setMessage("Login successful!");
+        
         if (data.msg.role === "admin") {
           console.warn("Redirect to admin panel");
         } else if (data.msg.role === "doctor") {

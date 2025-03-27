@@ -2,7 +2,7 @@ import React from 'react'
 import {BrowserRouter,Routes,Route} from 'react-router-dom'
 import Login from './Auth/Login'
 import Register from './Auth/Register'
-import Dashboard from "./Patient/dashboard";
+import Dashboard from "./Patient/pat-dashboard";
  
 const App = () => {
   return (
