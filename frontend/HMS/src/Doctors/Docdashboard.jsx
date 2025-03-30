@@ -1,6 +1,8 @@
 import React from 'react'
 
-const dashboard = () => {
+const Docdashboard = () => {
+
+  console.warn("doc daashboard")
 
     const getAllAppointments=async ()=>{
         try{
@@ -19,9 +21,10 @@ const dashboard = () => {
 
   return (
     <div>
+      <h2>wellcome to dashboard</h2>
       <button>Get All Appointments</button>
     </div>
   )
 }
 
-export default dashboard
+export default Docdashboard

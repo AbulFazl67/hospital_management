@@ -27,13 +27,16 @@ const Login = () => {
       const data = await response.json();
       if (data.msg) {
         setMessage("Login successful!");
-        
+        console.warn(data)
         if (data.msg.role === "admin") {
           console.warn("Redirect to admin panel");
+          navigate("/admin/dashboard")
         } else if (data.msg.role === "doctor") {
           console.warn("Redirect to doctor panel");
+          navigate("/doctors/dashboard")
         } else if (data.msg.role === "clerk") {
           console.warn("Redirect to clerk panel");
+          navigate("/clerk/dashboard")
         } else if (data.msg.role === "patient") {
           console.warn("Redirect to patient dashboard");
           localStorage.setItem("userId", data.msg.user_id);

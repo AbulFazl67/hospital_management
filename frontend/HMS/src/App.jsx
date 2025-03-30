@@ -3,7 +3,9 @@ import {BrowserRouter,Routes,Route} from 'react-router-dom'
 import Login from './Auth/Login'
 import Register from './Auth/Register'
 import Dashboard from "./Patient/pat-dashboard";
- 
+import AdminDashboard from './Admin/adminDashboard';
+import Docdashboard from './Doctors/Docdashboard'
+import ClerkDashboard from './Clerk/ClerkDashboard';
 const App = () => {
   return (
     <>
@@ -15,6 +17,9 @@ const App = () => {
       <Route path="/register" element={<Register />} />
       <Route path="/doctor/dashboard" element={<Register />} />
       <Route path="/patient/dashboard" element={<Dashboard />} />
+      <Route path="/admin/dashboard" element={<AdminDashboard />} />
+      <Route path="/doctors/dashboard" element={<Docdashboard />} />
+      <Route path="/clerk/dashboard" element={<ClerkDashboard />} />
     </Routes>
     </BrowserRouter> 
     </>
