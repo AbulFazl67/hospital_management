@@ -1,0 +1,58 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap');
+
+.addStaff {
+  max-width: 450px;
+  margin: 3rem auto;
+  background: white;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.08);
+  font-family: 'Montserrat', sans-serif;
+}
+
+.addStaff h2 {
+  text-align: center;
+  color: #28A570;
+  margin-bottom: 1.5rem;
+}
+
+.staff-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.staff-form input,
+.staff-form select {
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 15px;
+  outline: none;
+}
+
+.staff-form select {
+  background: #fff;
+}
+
+.staff-form .btn {
+  padding: 12px;
+  background-color: #28A570;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.staff-form .btn:hover {
+  background-color: #239560;
+}
+
+@media (max-width: 500px) {
+  .addStaff {
+    margin: 2rem 1rem;
+    padding: 1.5rem;
+  }
+}

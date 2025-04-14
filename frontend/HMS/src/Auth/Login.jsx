@@ -16,12 +16,14 @@ const Login = () => {
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
+      const password=window.btoa(user.password)
+      console.warn("password is" , password)
       const response = await fetch("http://localhost:3000/login", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ email: user.email, password: user.password }),
+        body: JSON.stringify({ email: user.email, password: password }),
       });
 
       const data = await response.json();
@@ -56,7 +58,7 @@ const Login = () => {
       <div className="auth-box">
 
         <div className="auth-form">
-          <h2 className="reg-logo">MHC</h2>
+          <h2 className="reg-logo">MAHEVI HEALTH CARE</h2>
           <h3>Welcome!</h3>
 
           <form onSubmit={handleLogin}>

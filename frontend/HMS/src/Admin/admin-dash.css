@@ -1,0 +1,115 @@
+.dashboard{
+    width: 100%;
+    height: 100vh;
+    background-color: #FAFBF9;
+    display: flex;
+}
+
+.leftSide{
+    width: 25%;
+    height: 100vh;
+    background-color: white;
+}
+
+.rightSide{
+    width: 75%;
+    height: 100Vh;
+    background-color: transparent;
+    padding: 20px;
+}
+
+.menu-items{
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    align-items: center;
+    list-style: none;
+    text-decoration: none;
+    justify-content: center;
+    height: 80%;
+}
+
+
+li{
+    text-decoration: none;
+    width: 75%;
+    background-color: #28a57117;
+    color: #28A570;
+    text-align: center;
+    padding: 10px 20px;
+    color: #28A570;
+    border-radius: 10px;
+}
+
+li:hover{
+    background-color: #28A570;
+    
+}
+
+li:hover a{
+    color: white;
+}
+a{
+    text-decoration: none;
+    color: #28A570;
+}
+
+.topRight{
+    width: 100%;
+    border-radius: 20px;
+    background-color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    height: 300px;
+    padding: 20px;
+}
+
+.topRight .top{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: #28A570;
+}
+
+.doctorCard{
+    width: 28%;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    height: 100% !important;
+    align-items: center;
+    background-color: #28a5710f;
+    border-radius: 10px;
+    padding: 5px;
+}
+
+.topRight .bottom{
+    height: 100%;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.doctorCard img{
+    width: 50%;
+}
+
+.Name{
+    font-size: 0.8rem;
+}
+
+.doctorCard button{
+    background-color: #28A570;
+    color: white;
+    border-radius: 3px;
+    border: none;
+    outline: none;
+    padding: 0px 8px;
+    height: 26px;
+}
+
+button:hover{
+    cursor: pointer;
+}

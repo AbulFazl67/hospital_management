@@ -1,0 +1,58 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap');
+
+.doctor-table-container {
+  padding: 2rem;
+  background: #f8f8f8;
+  min-height: 100vh;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.table-heading {
+  text-align: center;
+  color: #28A570;
+  margin-bottom: 1.5rem;
+  font-weight: 600;
+}
+
+.doctor-table {
+  width: 100%;
+  max-width: 900px;
+  margin: auto;
+  border-collapse: collapse;
+  background-color: white;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.05);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.doctor-table thead {
+  background-color: #28A570;
+  color: white;
+}
+
+.doctor-table th, .doctor-table td {
+  padding: 1rem;
+  text-align: left;
+  font-size: 15px;
+}
+
+.doctor-table tbody tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+.doctor-table tbody tr:hover {
+  background-color: #e7f7f1;
+}
+
+@media (max-width: 768px) {
+  .doctor-table th, .doctor-table td {
+    padding: 0.8rem;
+    font-size: 14px;
+  }
+
+  .doctor-table-container {
+    padding: 1rem;
+  }
+
+
+}

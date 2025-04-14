@@ -5,7 +5,8 @@ const app = require('./express.js');
 console.warn("api called")
 app.post("/register", (req, res) => {
     const sql = "insert into user(email , password , fullname , role) values(?,?,?,?)";
-    conn.query(sql, [req.body.email, req.body.password, req.body.fullname, req.body.role], (err, res1) => {
+    const password=Buffer.from(req.body.password, 'utf-8').toString('base64');
+    conn.query(sql, [req.body.email, password, req.body.fullname, req.body.role], (err, res1) => {
         if (err) {
             console.error(err)
             res.status(401).send({ error: "Cannot register user" })

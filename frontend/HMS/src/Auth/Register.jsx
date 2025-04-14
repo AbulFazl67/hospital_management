@@ -70,7 +70,7 @@ const Register = () => {
     <div className="auth-container">
       <div className="auth-box">
         <div className="auth-form">
-          <h2 className="reg-logo">MHC</h2>
+          <h2 className="reg-logo">MAHEVI HEALTH CARE</h2>
           <h3>Welcome!</h3>
 
           <form onSubmit={register}>
