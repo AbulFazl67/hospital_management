@@ -5,13 +5,13 @@ const app = require('./express.js');
 console.warn("api called")
 app.post("/register", (req, res) => {
     const sql = "insert into user(email , password , fullname , role) values(?,?,?,?)";
-    const password=Buffer.from(req.body.password, 'utf-8').toString('base64');
+    const password = Buffer.from(req.body.password, 'utf-8').toString('base64');
     conn.query(sql, [req.body.email, password, req.body.fullname, req.body.role], (err, res1) => {
         if (err) {
             console.error(err)
             res.status(401).send({ error: "Cannot register user" })
         } else {
-            res.status(201).send({ msg: "Registered successfully" , status:201 })
+            res.status(201).send({ msg: "Registered successfully", status: 201 })
         }
     })
 })
@@ -352,17 +352,58 @@ app.put("/update-user", (req, res) => {
 })
 
 
-app.get('/getPatientsAppointment/:id' , (req, res)=>{
-    const sql="select * from appointment where patient_id=?"
+app.get('/getPatientsAppointment/:id', (req, res) => {
+    const sql = "select * from appointment where patient_id=?"
     conn.query(sql, [req.params.id], (err, result) => {
-        if(err){
-            res.status(500).send({error:err})
-        }else{
-            if(result.length>0){
-                res.status(200).send({msg:result , status:200})
-            }else{
-                res.status(404).send({msg:"No Appointments Found" , status:404})
+        if (err) {
+            res.status(500).send({ error: err })
+        } else {
+            if (result.length > 0) {
+                res.status(200).send({ msg: result, status: 200 })
+            } else {
+                res.status(404).send({ msg: "No Appointments Found", status: 404 })
             }
         }
     })
 })
+
+app.get('/getAllAppointment', (req, res) => {
+    const sql = "SELECT * FROM appointment";
+    conn.query(sql, (err, appointments) => {
+        if (err) {
+            return res.status(500).send({ error: err });
+        }
+
+        if (appointments.length === 0) {
+            return res.send({ result: [] });
+        }
+
+        // Use Promise.all to wait for all queries to finish
+        const promises = appointments.map(appointment => {
+            return new Promise((resolve, reject) => {
+                const sql1 = "SELECT * FROM user WHERE user_id=?";
+                conn.query(sql1, [appointment.patient_id], (err1, userResult) => {
+                    if (err1) {
+                        reject(err1);
+                    } else {
+                        const data = {
+                            patient_name: userResult[0]?.fullname || "Unknown",
+                            appointment_id: appointment.appointment_id,
+                            appointment_datetime: appointment.appointment_datetime
+                        };
+                        resolve(data);
+                    }
+                });
+            });
+        });
+
+        Promise.all(promises)
+            .then(finalResult => {
+                console.warn(finalResult)
+                res.send({ result: finalResult });
+            })
+            .catch(error => {
+                res.status(500).send({ error: error });
+            });
+    });
+});

@@ -6,6 +6,7 @@ import Dashboard from "./Patient/pat-dashboard";
 import AdminDashboard from './Admin/adminDashboard';
 import Doctors from './Admin/doctors';
 import Patient from './Admin/patient';
+import Appointment from './Admin/appointment';
 import AddStaff from './Admin/AddStaff';
 import Docdashboard from './Doctors/Docdashboard'
 import ClerkDashboard from './Clerk/ClerkDashboard';
@@ -24,6 +25,7 @@ const App = () => {
       <Route path="/admin/dashboard" element={<AdminDashboard />} />
       <Route path="/admin/doctors" element={<Doctors />} />
       <Route path="/admin/patient" element={<Patient />} />
+      <Route path="/admin/appointment" element={<Appointment />} />
       <Route path="/admin/addStaff" element={<AddStaff />} />
       <Route path="/doctors/dashboard" element={<Docdashboard />} />
       <Route path="/clerk/dashboard" element={<ClerkDashboard />} />
