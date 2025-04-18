@@ -22,6 +22,7 @@ const AdminDashboard = () => {
             <a href="">See all</a>
           </div>
           <div className="bottom">
+            
             <div className="doctorCard">
               <img src="/docimg.png" alt="" />
               <b className='Name'>Dr Mahevi Aasif</b>

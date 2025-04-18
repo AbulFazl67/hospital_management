@@ -22,13 +22,26 @@ const AddStaff = () => {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData),
       });
-      const data = await res.json();
-      console.log(data);
-      alert("User registered successfully!");
-      setFormData({ email: '', fullname: '', password: '', role: 'patient' });
+      if(res.ok){
+        const data = await res.json();
+        console.log(data);
+        alert("User registered successfully!");
+        setFormData({ email: '', fullname: '', password: '', role: 'patient' });
+      }else if(res.status==401){
+        const data = await res.json();
+        console.warn(res)
+        console.warn(data)
+        alert(data?.error);
+      }
+     
     } catch (err) {
       console.error(err);
-      alert("Something went wrong!");
+      if(err.error=="User Already registered"){
+        alert("User already registered!");
+      }else{
+        alert("Something went wrong!");
+      }
+     
     }
   };
 

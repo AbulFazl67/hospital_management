@@ -9,7 +9,13 @@ app.post("/register", (req, res) => {
     conn.query(sql, [req.body.email, password, req.body.fullname, req.body.role], (err, res1) => {
         if (err) {
             console.error(err)
-            res.status(401).send({ error: "Cannot register user" })
+            if(err?.sqlMessage.includes("Duplicate")){
+                console.warn(err.sqlMessage.includes("Duplicate"))
+                res.status(401).send({ error: "User Already registered" })
+            }else{
+                res.status(401).send({ error: "Cannot register user" })
+            }
+            
         } else {
             res.status(201).send({ msg: "Registered successfully", status: 201 })
         }
@@ -18,6 +24,7 @@ app.post("/register", (req, res) => {
 
 app.post('/login', (req, res) => {
     const sql = "select * from user where email=? and password=?";
+    console.warn(req.body.email , req.body.password)
     conn.query(sql, [req.body.email, req.body.password], (err, result) => {
         if (err) {
             console.error(err)
