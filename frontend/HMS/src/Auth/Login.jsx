@@ -31,12 +31,15 @@ const Login = () => {
         setMessage("Login successful!");
         console.warn(data)
         if (data.msg.role === "admin") {
+          localStorage.setItem("userId", data.msg.user_id);
           console.warn("Redirect to admin panel");
           navigate("/admin/dashboard")
         } else if (data.msg.role === "doctor") {
+          localStorage.setItem("userId", data.msg.user_id);
           console.warn("Redirect to doctor panel");
           navigate("/doctors/dashboard")
         } else if (data.msg.role === "clerk") {
+          localStorage.setItem("userId", data.msg.user_id);
           console.warn("Redirect to clerk panel");
           navigate("/clerk/dashboard")
         } else if (data.msg.role === "patient") {
