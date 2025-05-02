@@ -40,8 +40,8 @@ const DocAppointment = () => {
       <div className="main-content">
         <h2>My Appointments</h2>
         <div className="appointment-list">
-          {appointments.length > 0 ? (
-            appointments.map((appointment) => (
+          {appointments?.length > 0 ? (
+            appointments?.map((appointment) => (
               <div className="card" key={appointment.treatment_id}>
                 <h3>{appointment.treatmentname}</h3>
                 <p><strong>Date:</strong> {new Date(appointment.treatmetdate).toLocaleDateString()}</p>

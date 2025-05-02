@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import './pat-dashboard.css';
-
+import { Link } from 'react-router-dom';
 const Dashboard = () => {
   const [appointmentList, setAppointmentList] = useState([]);
   const [doctors, setDoctors] = useState([]);
@@ -35,7 +35,7 @@ const Dashboard = () => {
     setDoctors([]);
 
     try {
-      const response = await fetch(`http://localhost:3000/getDoctors`); // Adjust endpoint as necessary
+      const response = await fetch(`http://localhost:3000/get-doctors`); // Adjust endpoint as necessary
       const data = await response.json();
 
       if (response.status === 200) {
@@ -61,16 +61,14 @@ const Dashboard = () => {
         <h2>MHC</h2>
         <nav>
           <ul>
-            <li>Dashboard</li>
-            <li>Doctors</li>
-            <li>Clerks</li>
-            <li>Patients Info</li>
-            <li>Appointments</li>
-            <li>Tests</li>
-            <li>Invoices</li>
-            <li>Contact Info</li>
-            <li>Settings</li>
-          </ul>
+                      <li>Dashboard</li>
+                                 <li><Link to="/patient/doctorList">Doctors</Link></li>
+                                 <li><Link to="/patient/myAppointment">Appointments</Link></li>
+                                 
+                                 <li><Link to="/patient/myInvoice">Invoices</Link></li>
+                                 <li>Contact Info</li>
+                                 <li>Settings</li>
+                    </ul>
         </nav>
       </aside>
       <main className="main-content">

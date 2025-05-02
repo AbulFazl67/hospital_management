@@ -263,6 +263,24 @@ app.get('/get-invoice/:id', (req, res) => {
     })
 })
 
+
+app.get('/get-patient-invoice/:id', (req, res) => {
+    const sql = "select * from invoice where user_id=?";
+    conn.query(sql, [req.params.id], (err, result) => {
+        if (err) {
+            res.status(401).send({
+                error: 'error in sql query'
+            })
+        } else {
+            if (result.length > 0) {
+                res.status(200).send({ msg: result })
+            } else {
+                res.status(401).send({ error: 'no treatment found' })
+            }
+        }
+    })
+})
+
 app.get('/get-invoice', (req, res) => {
     const sql = "select * from invoice ";
     conn.query(sql, [req.params.id], (err, result) => {
@@ -275,6 +293,22 @@ app.get('/get-invoice', (req, res) => {
                 res.status(200).send({ msg: result })
             } else {
                 res.status(401).send({ error: 'no treatment found' })
+            }
+        }
+    })
+})
+
+app.get('/getPatientsAppointment/:id', (req, res) => {
+    console.warn("get patient called")
+    const sql = "select * from appointment where patient_id=?"
+    conn.query(sql, [req.params.id], (err, result) => {
+        if (err) {
+            res.status(500).send({ error: err })
+        } else {
+            if (result.length > 0) {
+                res.status(200).send({ msg: result, status: 200 })
+            } else {
+                res.status(202).send({ msg: "No Appointments Found", status: 401 })
             }
         }
     })

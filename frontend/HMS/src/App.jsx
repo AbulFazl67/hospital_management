@@ -5,6 +5,9 @@ import Register from './Auth/Register'
 import Dashboard from "./Patient/pat-dashboard";
 import AdminDashboard from './Admin/adminDashboard';
 import DocAppointment from './Doctors/DocAppointment';
+import DoctorsList from './Patient/DoctorsList'
+import MyAppointment from './Patient/MyAppointment'
+import MyInvoice from './Patient/MyInvoice'
 import Doctors from './Admin/doctors';
 import Patient from './Admin/patient';
 import Appointment from './Admin/appointment';
@@ -31,6 +34,9 @@ const App = () => {
       <Route path="/doctors/dashboard" element={<Docdashboard />} />
       <Route path="/doctors/appointment" element={<DocAppointment />} />
       <Route path="/clerk/dashboard" element={<ClerkDashboard />} />
+      <Route path="/patient/doctorList" element={<DoctorsList />} />
+      <Route path="/patient/myAppointment" element={<MyAppointment />} />
+      <Route path="/patient/myInvoice" element={<MyInvoice />} />
     </Routes>
     </BrowserRouter> 
     </>
